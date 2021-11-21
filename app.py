@@ -52,11 +52,8 @@ def main():
 
     st.image(image, caption=prediction, use_column_width=True)
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.button('Prev', on_click=predict_neighboring_image, kwargs={'offset': -1})
-    with col2:
-        st.button('Next', on_click=predict_neighboring_image, kwargs={'offset': 1})
+    st.sidebar.button('Predict Previous Scan', on_click=predict_neighboring_image, kwargs={'offset': -1})
+    st.sidebar.button('Predict Next Scan', on_click=predict_neighboring_image, kwargs={'offset': 1})
 
     # if uploaded_file is not None:
     #     image = Image.open(uploaded_file)
