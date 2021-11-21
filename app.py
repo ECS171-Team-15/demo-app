@@ -12,6 +12,13 @@ import tensorflow as tf
 def predict_neighboring_image(offset):
     st.session_state.image_index = st.session_state.image_index + offset
 
+# Convert label int to string output
+def label_str(class_label):
+    if class_label == 1:
+        return 'Positive'
+    else:
+        return 'Negative'
+
 def main():
     st.success("# COVID-19 CT scan classification")
 
@@ -25,6 +32,7 @@ def main():
     print("Loading dataset...")
     dataset = read_csv('original.csv', nrows=1, skiprows=st.session_state.image_index)
     # Remove class label
+    class_label = dataset.iloc[0, -1]
     dataset = dataset.iloc[:, :-1]
     image_pixels = dataset.iloc[0]
 
@@ -43,14 +51,12 @@ def main():
 
     # Model prediction
     predictions = model.predict(dataset)
-    if predictions[0] == 1:
-        prediction = 'Positive'
-    else:
-        prediction = 'Negative'
+    prediction = predictions[0]
 
-    "Image ", st.session_state.image_index
+    st.image(image, caption="Image " + str(st.session_state.image_index), use_column_width=True)
 
-    st.image(image, caption=prediction, use_column_width=True)
+    "Actual: " + label_str(class_label)
+    "Prediction: " + label_str(prediction)
 
     st.sidebar.button('Predict Previous Scan', on_click=predict_neighboring_image, kwargs={'offset': -1})
     st.sidebar.button('Predict Next Scan', on_click=predict_neighboring_image, kwargs={'offset': 1})
