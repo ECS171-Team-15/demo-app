@@ -27,7 +27,7 @@ def main():
         st.session_state.image_index = 0
 
     # Load image and model
-    print("Loading dataset...")
+    "Loading image..."
     dataset = read_csv('original.csv', nrows=1, skiprows=st.session_state.image_index)
     # Remove class label
     class_label = dataset.iloc[0, -1]
@@ -38,7 +38,7 @@ def main():
     dataset.applymap(lambda x: x / 255)
     image_pixels = dataset.iloc[0]
 
-    print("Loading model...")
+    "Loading model..."
     model = load_model('Falsel1_l2.h5')
 
     # Convert image pixels to Image representation
@@ -52,6 +52,7 @@ def main():
     dataset = tf.reshape(dataset, (1, height, width, 1))
 
     # Model prediction
+    "Making prediction..."
     predictions = model.predict(dataset)
     prediction = predictions[0]
 
