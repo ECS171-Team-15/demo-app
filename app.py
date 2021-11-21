@@ -32,6 +32,10 @@ def main():
     # Remove class label
     class_label = dataset.iloc[0, -1]
     dataset = dataset.iloc[:, :-1]
+
+    # Min-max scaler
+    "Scaling image pixels..."
+    dataset.applymap(lambda x: x / 255)
     image_pixels = dataset.iloc[0]
 
     print("Loading model...")
