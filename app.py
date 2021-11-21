@@ -22,8 +22,6 @@ def label_str(class_label):
 def main():
     st.success("# COVID-19 CT scan classification")
 
-    # uploaded_file=st.file_uploader("Upload your scan here...",type=['jpg','png'])
-
     if 'image_index' not in st.session_state:
         # Initialize image to use at session start
         st.session_state.image_index = 0
@@ -60,10 +58,6 @@ def main():
 
     st.sidebar.button('Predict Previous Scan', on_click=predict_neighboring_image, kwargs={'offset': -1})
     st.sidebar.button('Predict Next Scan', on_click=predict_neighboring_image, kwargs={'offset': 1})
-
-    # if uploaded_file is not None:
-    #     image = Image.open(uploaded_file)
-    #     st.image(image, caption='Uploaded CT scan', use_column_width=True)
 
 if __name__=='__main__':
     main()
