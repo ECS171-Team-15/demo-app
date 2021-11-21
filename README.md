@@ -11,7 +11,7 @@ This app relies on:
 
 1. Install streamlit by running: `python3 -m pip install streamlit`
 2. Download original.csv to this repository's base directory by running: `bash fetch-original-csv.sh`
-3. Download the best-performing model in this Google Drive [folder](https://drive.google.com/drive/folders/1lgG4LkhwK06ysk9o09jS8ABqopvbBQYz).
+3. Download the best-performing model in this Google Drive [folder](https://drive.google.com/drive/folders/1lgG4LkhwK06ysk9o09jS8ABqopvbBQYz). (According to our paper, the best model is the one that only has L1_L2 regularization, or `Falsel1_l2.h5`)
 
 ## Running
 
