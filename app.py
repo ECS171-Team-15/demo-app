@@ -28,7 +28,7 @@ def main():
         # Initialize image to use at session start
         st.session_state.image_index = 0
 
-    # Load image and model
+    # Load image
     "Loading image..."
     dataset = read_csv('original.csv', nrows=1, skiprows=st.session_state.image_index)
     # Remove class label
@@ -38,6 +38,8 @@ def main():
     # Min-max scaler
     "Scaling image pixels..."
     dataset.applymap(lambda x: x / 255)
+
+    # Convert dataframe to list of pixels
     image_pixels = dataset.iloc[0]
 
     "Loading model..."
