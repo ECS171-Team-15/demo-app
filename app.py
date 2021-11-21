@@ -3,14 +3,16 @@ from PIL import Image
 
 # Data
 from pandas import read_csv
+import random
 
 # Model
 from keras.models import load_model
 import tensorflow as tf
 
 # Button callback function
-def predict_neighboring_image(offset):
-    st.session_state.image_index = st.session_state.image_index + offset
+def predict_random_ct():
+    # 746 images in total for original dataset
+    st.session_state.image_index = random.randrange(0, 746)
 
 # Convert label int to string output
 def label_str(class_label):
@@ -61,8 +63,7 @@ def main():
     "Actual: " + label_str(class_label)
     "Prediction: " + label_str(prediction)
 
-    st.sidebar.button('Predict Previous Scan', on_click=predict_neighboring_image, kwargs={'offset': -1})
-    st.sidebar.button('Predict Next Scan', on_click=predict_neighboring_image, kwargs={'offset': 1})
+    st.sidebar.button('Predict Random CT Scan', on_click=predict_random_ct)
 
 if __name__=='__main__':
     main()
