@@ -5,6 +5,7 @@
 1. One of our four model files (\*.h5)
 2. Streamlit library
 3. Tensorflow and Keras versions >=2.6.0
+4. pip3 install -U protobuf1
 
 ## Setup
 
