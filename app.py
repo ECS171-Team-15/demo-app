@@ -17,6 +17,7 @@ def prediction_str(prediction):
         return 'Negative'
 
 def main():
+    st.set_page_config(page_title="COVID classifier")
     st.success("# COVID-19 CT scan classification")
 
     # Load image
