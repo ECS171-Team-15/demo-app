@@ -50,7 +50,10 @@ def main():
 
     # Output
     st.image(image, use_column_width=True)
-    "Prediction: " + prediction_str(prediction)
+    if prediction_str(prediction) == "Positive":
+        st.error("# You are positive for COVID!!!")
+    elif prediction_str(prediction) == "Negative":
+        st.success("# You are negative for COVID!")
 
 if __name__=='__main__':
     main()
