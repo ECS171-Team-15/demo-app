@@ -1,3 +1,5 @@
+Live demo: https://share.streamlit.io/ecs171-team-15/demo-app/main/app.py.
+
 # Presentation Demo
 
 ## Prerequisites
